@@ -1,0 +1,19 @@
+Charac Class method in Jshell
+
+// 1. isLetter(char c) - Determines if the specified character is a letter.
+Character.isLetter('A');
+
+// 2. isDigit(char c) - Determines if the specified character is a digit.
+Character.isDigit('5');
+
+// 3. isUpperCase(char c) - Determines if the specified character is an uppercase letter.
+Character.isUpperCase('C');
+
+// 4. isLowerCase(char c) - Determines if the specified character is a lowercase letter.
+Character.isLowerCase('d');
+
+// 5. toUpperCase(char c) - Converts the specified character to uppercase.
+Character.toUpperCase('a');
+
+// 6. toLowerCase(char c) - Converts the specified character to lowercase.
+Character.toLowerCase('X');
