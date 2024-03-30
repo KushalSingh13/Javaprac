@@ -1,69 +1,63 @@
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Random;
 
-public class ScientificCalculator {
-    
+public class PrimeCounter {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        
-        System.out.println("Welcome to the Scientific Calculator!");
-        System.out.println("Choose an operation:");
-        System.out.println("1. Factorial");
-        System.out.println("2. Power of a number");
-        System.out.println("3. Square root");
-        System.out.println("4. Logarithm base 10");
-        System.out.println("5. Natural logarithm");
-        System.out.print("Enter your choice: ");
-        
-        int choice = scanner.nextInt();
-        
-        switch (choice) {
-            case 1:
-                System.out.print("Enter the number to find factorial: ");
-                int num = scanner.nextInt();
-                long factorial = findFactorial(num);
-                System.out.println("Factorial of " + num + " is: " + factorial);
-                break;
-            case 2:
-                System.out.print("Enter the base number: ");
-                double base = scanner.nextDouble();
-                System.out.print("Enter the exponent: ");
-                double exponent = scanner.nextDouble();
-                double result = power(base, exponent);
-                System.out.println(base + " raised to the power of " + exponent + " is: " + result);
-                break;
-            case 3:
-                System.out.print("Enter the number to find square root: ");
-                double number = scanner.nextDouble();
-                double squareRoot = Math.sqrt(number);
-                System.out.println("Square root of " + number + " is: " + squareRoot);
-                break;
-            case 4:
-                System.out.print("Enter the number to find logarithm (base 10): ");
-                double logNumber = scanner.nextDouble();
-                double logResult = Math.log10(logNumber);
-                System.out.println("Logarithm base 10 of " + logNumber + " is: " + logResult);
-                break;
-            case 5:
-                System.out.print("Enter the number to find natural logarithm: ");
-                double naturalLogNumber = scanner.nextDouble();
-                double naturalLogResult = Math.log(naturalLogNumber);
-                System.out.println("Natural logarithm of " + naturalLogNumber + " is: " + naturalLogResult);
-                break;
-            default:
-                System.out.println("Invalid choice!");
+        long startTime = System.nanoTime();
+
+        // Generate array of 10 lakh (1 million) 7-digit numbers
+        int[] numbers = generateNumbers(1000000);
+
+        // Count prime and non-prime numbers
+        int primeCount = 0;
+        int nonPrimeCount = 0;
+        for (int num : numbers) {
+            if (isPrime(num)) {
+                primeCount++;
+            } else {
+                nonPrimeCount++;
+            }
         }
-        
-        scanner.close();
+
+        long endTime = System.nanoTime();
+        long totalTime = endTime - startTime;
+
+        System.out.println("Prime numbers count: " + primeCount);
+        System.out.println("Non-prime numbers count: " + nonPrimeCount);
+        System.out.println("Time taken: " + totalTime + " nanoseconds");
     }
-    
-    public static long findFactorial(int n) {
-        if (n == 0 || n == 1)
-            return 1;
-        else
-            return n * findFactorial(n - 1);
+
+    // Function to generate 7-digit numbers
+    public static int[] generateNumbers(int count) {
+        int[] numbers = new int[count];
+        Random rand = new Random();
+        for (int i = 0; i < count; i++) {
+            int number = 0;
+            for (int j = 0; j < 7; j++) {
+                int digit = rand.nextInt(10); // Generate digit from 0 to 9
+                number = number * 10 + digit;
+            }
+            numbers[i] = number;
+        }
+        return numbers;
     }
-    
-    public static double power(double base, double exponent) {
-        return Math.pow(base, exponent);
+
+    // Function to check if a number is prime
+    public static boolean isPrime(int n) {
+        if (n <= 1) {
+            return false;
+        }
+        if (n <= 3) {
+            return true;
+        }
+        if (n % 2 == 0 || n % 3 == 0) {
+            return false;
+        }
+        for (int i = 5; i * i <= n; i += 6) {
+            if (n % i == 0 || n % (i + 2) == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 }
