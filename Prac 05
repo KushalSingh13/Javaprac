@@ -1,0 +1,69 @@
+import java.util.Scanner;
+
+public class ScientificCalculator {
+    
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        
+        System.out.println("Welcome to the Scientific Calculator!");
+        System.out.println("Choose an operation:");
+        System.out.println("1. Factorial");
+        System.out.println("2. Power of a number");
+        System.out.println("3. Square root");
+        System.out.println("4. Logarithm base 10");
+        System.out.println("5. Natural logarithm");
+        System.out.print("Enter your choice: ");
+        
+        int choice = scanner.nextInt();
+        
+        switch (choice) {
+            case 1:
+                System.out.print("Enter the number to find factorial: ");
+                int num = scanner.nextInt();
+                long factorial = findFactorial(num);
+                System.out.println("Factorial of " + num + " is: " + factorial);
+                break;
+            case 2:
+                System.out.print("Enter the base number: ");
+                double base = scanner.nextDouble();
+                System.out.print("Enter the exponent: ");
+                double exponent = scanner.nextDouble();
+                double result = power(base, exponent);
+                System.out.println(base + " raised to the power of " + exponent + " is: " + result);
+                break;
+            case 3:
+                System.out.print("Enter the number to find square root: ");
+                double number = scanner.nextDouble();
+                double squareRoot = Math.sqrt(number);
+                System.out.println("Square root of " + number + " is: " + squareRoot);
+                break;
+            case 4:
+                System.out.print("Enter the number to find logarithm (base 10): ");
+                double logNumber = scanner.nextDouble();
+                double logResult = Math.log10(logNumber);
+                System.out.println("Logarithm base 10 of " + logNumber + " is: " + logResult);
+                break;
+            case 5:
+                System.out.print("Enter the number to find natural logarithm: ");
+                double naturalLogNumber = scanner.nextDouble();
+                double naturalLogResult = Math.log(naturalLogNumber);
+                System.out.println("Natural logarithm of " + naturalLogNumber + " is: " + naturalLogResult);
+                break;
+            default:
+                System.out.println("Invalid choice!");
+        }
+        
+        scanner.close();
+    }
+    
+    public static long findFactorial(int n) {
+        if (n == 0 || n == 1)
+            return 1;
+        else
+            return n * findFactorial(n - 1);
+    }
+    
+    public static double power(double base, double exponent) {
+        return Math.pow(base, exponent);
+    }
+}
