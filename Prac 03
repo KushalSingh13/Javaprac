@@ -1,0 +1,13 @@
+jshell> import java.lang.String;
+|  Imported: java.lang.String
+
+jshell> String str = "Hello, World!";
+str ==> "Hello, World!"
+
+jshell> str.length();
+$3 ==> 13
+
+jshell> str.charAt(0);
+$4 ==> 'H'
+
+// Continue invoking other methods like substring(), toUpperCase(), etc.
