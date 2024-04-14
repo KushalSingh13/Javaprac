@@ -1,0 +1,119 @@
+1. Add interfaces and exception handling in Library Management 
+
+import java.util.ArrayList;
+import java.util.List;
+
+interface LibraryItem {
+    void displayDetails();
+}
+
+class Book implements LibraryItem {
+    private String title;
+    private String author;
+
+    public Book(String title, String author) {
+        this.title = title;
+        this.author = author;
+    }
+
+    public void displayDetails() {
+        System.out.println("Book Title: " + title);
+        System.out.println("Author: " + author);
+    }
+}
+
+class DVD implements LibraryItem {
+    private String title;
+    private String director;
+
+    public DVD(String title, String director) {
+        this.title = title;
+        this.director = director;
+    }
+
+    public void displayDetails() {
+        System.out.println("DVD Title: " + title);
+        System.out.println("Director: " + director);
+    }
+}
+
+class Library {
+    private List<LibraryItem> items;
+
+    public Library() {
+        items = new ArrayList<>();
+    }
+
+    public void addItem(LibraryItem item) {
+        items.add(item);
+    }
+
+    public void displayLibrary() {
+        for (LibraryItem item : items) {
+            item.displayDetails();
+            System.out.println();
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Library library = new Library();
+
+        try {
+            library.addItem(new Book("Java Programming", "John Doe"));
+            library.addItem(new DVD("The Matrix", "Wachowskis"));
+            library.displayLibrary();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+2. Add functions in Calci
+
+import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double num1, num2;
+        System.out.println("Enter first number:");
+        num1 = scanner.nextDouble();
+        System.out.println("Enter second number:");
+        num2 = scanner.nextDouble();
+
+        System.out.println("Select operation:");
+        System.out.println("1. Addition");
+        System.out.println("2. Subtraction");
+        System.out.println("3. Multiplication");
+        System.out.println("4. Division");
+        System.out.println("5. Custom Function: Power");
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Result: " + (num1 + num2));
+                break;
+            case 2:
+                System.out.println("Result: " + (num1 - num2));
+                break;
+            case 3:
+                System.out.println("Result: " + (num1 * num2));
+                break;
+            case 4:
+                if (num2 != 0)
+                    System.out.println("Result: " + (num1 / num2));
+                else
+                    System.out.println("Error! Division by zero.");
+                break;
+            case 5:
+                System.out.println("Result: " + Math.pow(num1, num2));
+                break;
+            default:
+                System.out.println("Invalid operation");
+        }
+        scanner.close();
+    }
+}
