@@ -1,6 +1,6 @@
 Operations of a scientific calculator other than regular operations
 
-mport java.util.Scanner;
+import java.util.Scanner;
 
 public class ScientificCalculator {
     
