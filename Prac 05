@@ -7,10 +7,10 @@ public class PrimeCounter {
     public static void main(String[] args) {
         long startTime = System.nanoTime();
 
-        // Generate array of 10 lakh (1 million) 7-digit numbers
+       
         int[] numbers = generateNumbers(1000000);
 
-        // Count prime and non-prime numbers
+       
         int primeCount = 0;
         int nonPrimeCount = 0;
         for (int num : numbers) {
@@ -29,7 +29,7 @@ public class PrimeCounter {
         System.out.println("Time taken: " + totalTime + " nanoseconds");
     }
 
-    // Function to generate 7-digit numbers
+    
     public static int[] generateNumbers(int count) {
         int[] numbers = new int[count];
         Random rand = new Random();
@@ -44,7 +44,7 @@ public class PrimeCounter {
         return numbers;
     }
 
-    // Function to check if a number is prime
+    
     public static boolean isPrime(int n) {
         if (n <= 1) {
             return false;
