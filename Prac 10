@@ -4,25 +4,25 @@ import java.util.Scanner;
 
 public class UserInputExample {
     public static void main(String[] args) {
-        // Create a Scanner object for reading input
+       
         Scanner scanner = new Scanner(System.in);
 
-        // Prompt the user to enter their name
+        
         System.out.print("Enter your name: ");
 
-        // Read the user's input as a String
+        
         String name = scanner.nextLine();
 
-        // Prompt the user to enter their age
+        
         System.out.print("Enter your age: ");
 
-        // Read the user's input as an integer
+        
         int age = scanner.nextInt();
 
-        // Display the user's name and age
+        
         System.out.println("Hello, " + name + "! You are " + age + " years old.");
 
-        // Close the Scanner object to prevent resource leak
+       
         scanner.close();
     }
 }
@@ -34,27 +34,27 @@ import java.io.IOException;
 
 public class ReadFileExample {
     public static void main(String[] args) {
-        // Specify the path of the file to be read
+        
         String filePath = "path_to_your_file.txt"; // Update with your file path
 
         try {
-            // Create a FileReader object with the specified file path
+           
             FileReader fileReader = new FileReader(filePath);
 
-            // Read characters from the file using FileReader
+           
             int character;
             StringBuilder content = new StringBuilder();
 
-            // Read each character until the end of file (EOF) is reached
+          
             while ((character = fileReader.read()) != -1) {
                 // Append the read character to the content StringBuilder
                 content.append((char) character);
             }
 
-            // Close the FileReader to release resources
+            
             fileReader.close();
 
-            // Display the content read from the file
+           
             System.out.println("File content:");
             System.out.println(content.toString());
 
@@ -74,20 +74,20 @@ import java.io.IOException;
 
 public class ReadFileUsingBufferedReader {
     public static void main(String[] args) {
-        // Specify the path of the file to be read
+        
         String filePath = "path_to_your_file.txt"; // Update with your file path
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
             String line;
 
-            // Read lines from the file until the end of file (EOF) is reached
+           
             while ((line = reader.readLine()) != null) {
-                // Process each line (e.g., print to console)
+                
                 System.out.println(line);
             }
 
         } catch (IOException e) {
-            // Handle IOException if any error occurs while reading the file
+           
             System.err.println("Error reading the file: " + e.getMessage());
             e.printStackTrace();
         }
