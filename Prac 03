@@ -12,4 +12,3 @@ $3 ==> 13
 jshell> str.charAt(0);
 $4 ==> 'H'
 
-// Continue invoking other methods like substring(), toUpperCase(), etc.
